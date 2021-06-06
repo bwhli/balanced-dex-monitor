@@ -96,7 +96,7 @@ def process_swap_event(tx_hash, data, indexed):
     }
 
     content = f"""
-    {sender} swapped **{swap['from_value']} {swap['from_token']}** for **{swap['to_value']} {swap['to_token']}** at an average price of {swap['fill_price']} {swap['from_token']}
+    🔁 {sender} swapped **{swap['from_value']} {swap['from_token']}** for **{swap['to_value']} {swap['to_token']}** at an average price of {swap['fill_price']} {swap['from_token']}
 [Click here to view the transaction](https://tracker.icon.foundation/transaction/{tx_hash}).
     """
 
