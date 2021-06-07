@@ -1,5 +1,6 @@
+from datetime import datetime
+import pytz
 import requests
-
 
 
 def contract_to_name(contract):
@@ -9,21 +10,31 @@ def contract_to_name(contract):
         return "BALN"
     elif contract == "cx88fd7df7ddff82f7cc735c871dc519838cb235bb":
         return "bnUSD"
-
-
-def hex_to_int(hex, exa: int = 0, fmt = None):
-    if exa > 0:
-        result =  int(hex, 16) / 10 ** exa
     else:
-        result = int(hex, 16)
-    if not fmt: 
-        return result
+        return contract
 
 
-def send_discord_notification(url, content):
+def hex_to_int(n, exa: int = 18, dec: int = 2):
+    result = n / 10 ** exa
+    if (result).is_integer():
+        return f"{int(result):,.0f}"
+    else:
+        return f"{result:,.4f}"
+
+
+def format(s):
+    if s[:2] == "0x":
+        return int(s, 16)
+    if s[:2] == "cx":
+        return contract_to_name(s)
+    else:
+        return s
+
+
+def send_discord_notification(url, embeds):
     payload = {
         "username": "RHIZOME Swap Monitor",
-        "avatar_url": "",
-        "content": content,
+        "embeds": [embeds],
     }
-    requests.post(url, data=payload)
+    r = requests.post(url, json=payload)
+    print(r.text)
