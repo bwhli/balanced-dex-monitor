@@ -181,6 +181,8 @@ def main():
 
         block += 1
 
+        continue
+
 
 if __name__ == "__main__":
     main()
