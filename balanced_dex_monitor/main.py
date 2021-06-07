@@ -149,7 +149,7 @@ def process_swap_event(block_height, tx_hash, data, indexed):
 
     embeds = {
         "title": f"New Swap at Block #{block_height:,}",
-        "url": "https://tracker.icon.foundation/transaction/{tx_hash}",
+        "url": f"https://tracker.icon.foundation/transaction/{tx_hash}",
         "color": color,
         "footer": {
             "text": "Brought to you by RHIZOME."
@@ -181,7 +181,7 @@ def main():
     if DEBUG_MODE:
         block = 35285328  # BALN/sICX, sICX to BALN (buy order)
         block = 35345275  # BALN/sICX, BALN to sICX (sell order)
-        # block = 35346792  # bnusd / sICX
+        block = 35346792  # bnusd / sICX
 
     while True:
 

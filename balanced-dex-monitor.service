@@ -1,0 +1,11 @@
+[Unit]
+Description=Restarts Balanced DEX Monitor if it closes.
+After=multi-user.target
+
+[Service]
+User=brian
+ExecStart=/home/brian/.pyenv/versions/balanced-dex-monitor-3.9.5/bin/python3.9 /home/brian/balanced-dex-monitor/balanced_dex_monitor/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
