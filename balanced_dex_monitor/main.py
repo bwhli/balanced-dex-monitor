@@ -93,22 +93,6 @@ def process_swap_event(block_height, tx_hash, data, indexed):
     ending_price = hex_to_int(ending_price, 18, 2)
     fill_price = hex_to_int(fill_price, 18, 2)
 
-    print((
-        from_token,
-        to_token,
-        sender,
-        receiver,
-        from_value,
-        to_value,
-        timestamp,
-        lp_fees,
-        baln_fees,
-        pool_base,
-        pool_quote,
-        ending_price,
-        fill_price,
-    ))
-
     # Set Discord color and order details based on order type.
     if base_token == to_token:  # Buy order.
         color = 3066993  # Green
@@ -136,16 +120,12 @@ def process_swap_event(block_height, tx_hash, data, indexed):
         f"Quote: {pool_quote} {pool_map[pool_id][1]}"  # noqa 503
     )
 
-    print(pool)
-
     # Set metadata details.
     metadata = (
         f"Address: [{sender}](https://tracker.icon.foundation/address/{sender})\n"
         f"Hash: [{tx_hash[:32]}...](https://tracker.icon.foundation/transaction/{tx_hash})\n"
         f"Timestamp: {datetime.fromtimestamp(timestamp / 1000000, tz=pytz.utc).strftime('%Y-%m-%dT%H:%M:%S UTC')}"  # noqa 503
     )
-
-    print(metadata)
 
     embeds = {
         "title": f"New Swap at Block #{block_height:,}",
@@ -170,8 +150,7 @@ def process_swap_event(block_height, tx_hash, data, indexed):
         ]
     }
 
-    print(embeds)
-
+    # Send notification to Discord.
     send_discord_notification(SWAP_NOTIFICATIONS_WH, embeds)
 
 
