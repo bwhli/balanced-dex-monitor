@@ -18,7 +18,7 @@ def contract_to_ticker(contract):
 
 def format_number(num, exa=18):
     result = num / 10 ** exa
-    return f"{result:,.4g}"
+    return f"{result:,.4f}"
 
 
 def hex_to_int(hex):
