@@ -1,6 +1,6 @@
 import requests
 import threading
-from datetime import datetime, timezone
+from datetime import datetime
 from iconsdk.icon_service import IconService
 from iconsdk.providers.http_provider import HTTPProvider
 from time import sleep
@@ -12,7 +12,7 @@ ICON_SERVICE = IconService(HTTPProvider("https://ctz.solidwallet.io", 3))
 
 def process_events(block):
 
-    MAX_RETRY = 3
+    MAX_RETRY = 2
 
     def process_swaps(block):
         SWAP_API_ENDPOINT = "https://balanced.geometry.io/api/v1/dex/logs/Swap"
