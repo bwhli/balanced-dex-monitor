@@ -18,10 +18,10 @@ while True:
         try:
             ICON_SERVICE.get_block(block)
         except JSONRPCException:
-            sleep(1)
+            sleep(2)
             continue
         else:
             print(f"Checking block {block} for swaps...")
             q.enqueue(process_events, block)
-            sleep(1)
+            sleep(2)
             block += 1
