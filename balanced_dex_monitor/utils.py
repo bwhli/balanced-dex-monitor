@@ -1,40 +1,34 @@
-from datetime import datetime
-import pytz
+import os
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-def contract_to_name(contract):
+def contract_to_ticker(contract):
     if contract == "cx2609b924e33ef00b648a409245c7ea394c467824":
         return "sICX"
     elif contract == "cxf61cd5a45dc9f91c15aa65831a30a90d59a09619":
         return "BALN"
     elif contract == "cx88fd7df7ddff82f7cc735c871dc519838cb235bb":
         return "bnUSD"
-    else:
-        return contract
+    elif contract is None:
+        return "ICX"
 
 
-def hex_to_int(n, exa: int = 18, dec: int = 2):
-    result = n / 10 ** exa
-    if (result).is_integer():
-        return f"{int(result):,.0f}"
-    else:
-        return f"{result:,.4f}"
+def format_number(num, exa=18):
+    result = num / 10 ** exa
+    return f"{result:,.4g}"
 
 
-def format(s):
-    if s[:2] == "0x":
-        return int(s, 16)
-    if s[:2] == "cx":
-        return contract_to_name(s)
-    else:
-        return s
+def hex_to_int(hex):
+    return int(hex, 16)
 
 
-def send_discord_notification(url, embeds):
+def send_discord_notification(message):
+    DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
     payload = {
-        "username": "RHIZOME Swap Monitor",
-        "embeds": [embeds],
+        "username": "Balanced DEX Monitor",
+        "content": message,
     }
-    r = requests.post(url, json=payload)
-    print(r.text)
+    requests.post(DISCORD_WEBHOOK_URL, json=payload)
