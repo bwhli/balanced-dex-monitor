@@ -18,7 +18,7 @@ def contract_to_ticker(contract):
 
 def format_number(num, exa=18):
     result = num / 10 ** exa
-    if int(result).is_integer():
+    if result.is_integer():
         return f"{result:,.0f}"
     else:
         return f"{result:,.4f}"
