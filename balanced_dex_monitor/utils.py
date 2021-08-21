@@ -21,7 +21,7 @@ def format_number(num, exa=18):
     if result.is_integer():
         return f"{result:,.0f}"
     else:
-        return f"{result:,.4f}"
+        return f"{result:,.2f}"
 
 
 def hex_to_int(hex):
