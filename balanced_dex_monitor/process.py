@@ -39,7 +39,7 @@ def process_events(block):
                         # receiver = data[3]
                         from_value = hex_to_int(data[4])
                         to_value = hex_to_int(data[5])
-                        timestamp = datetime.fromtimestamp(hex_to_int(data[6]) / 1000000, tz=timezone.utc).replace(microsecond=0).isoformat()  # noqa 503
+                        timestamp = datetime.fromtimestamp(hex_to_int(data[6]) / 1000000, tz=timezone.utc).replace(microsecond=0, tzinfo=None).isoformat()  # noqa 503
                         # lp_fees = hex_to_int(data[7])
                         # baln_fees = hex_to_int(data[8])
                         # pool_base = hex_to_int(data[9])
