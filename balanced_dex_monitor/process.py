@@ -12,7 +12,7 @@ ICON_SERVICE = IconService(HTTPProvider("https://ctz.solidwallet.io", 3))
 
 def process_events(block):
 
-    MAX_RETRY = 2
+    MAX_RETRY = 3
 
     def process_swaps(block):
         SWAP_API_ENDPOINT = "https://balanced.geometry.io/api/v1/dex/logs/Swap"
