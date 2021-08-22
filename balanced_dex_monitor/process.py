@@ -54,7 +54,7 @@ def process_events(block):
                     break
                 else:
                     print("Sleeping for 1 second...")
-                    sleep(1)
+                    sleep(0.75)
                     i += 1
             except Exception as e:
                 print(e)
@@ -85,7 +85,7 @@ def process_events(block):
                     break
                 else:
                     print("Sleeping for 1 second...")
-                    sleep(1)
+                    sleep(0.75)
                     i += 1
             except Exception as e:
                 print(e)
