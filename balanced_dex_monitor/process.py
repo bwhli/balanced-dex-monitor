@@ -67,8 +67,8 @@ def process_events(block):
                 url = f"{TRANSFER_API_ENDPOINT}?method=TokenTransfer&min_block_number={block}&max_block_number={block}&limit=1000&skip=0"  # noqa 503
                 r = requests.get(url)
                 transfers = r.json()
-                print(f"Processing {len(transfers)} transfers in Block {block}...")  # noqa 503
                 if len(transfers) > 0:
+                    print(f"Processing {len(transfers)} transfers in Block {block}...")  # noqa 503
                     for transfer in transfers:
                         indexed = transfer["indexed"]
                         timestamp = transfer["item_timestamp"][:-1]
