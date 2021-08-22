@@ -53,7 +53,6 @@ def process_events(block):
 
                     break
                 else:
-                    print("Sleeping for 1 second...")
                     sleep(0.75)
                     i += 1
             except Exception as e:
@@ -84,7 +83,6 @@ def process_events(block):
                         send_discord_notification(message)
                     break
                 else:
-                    print("Sleeping for 1 second...")
                     sleep(0.75)
                     i += 1
             except Exception as e:
